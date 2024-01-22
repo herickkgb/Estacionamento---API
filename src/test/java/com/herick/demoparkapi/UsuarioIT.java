@@ -293,7 +293,7 @@ public class UsuarioIT {
                 .patch()
                 .uri("/api/v1/usuarios/100")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UsuarioSenhaDTO("123456", "123456", "000000"))
+                .bodyValue(new UsuarioSenhaDTO("123456", "102030", "000000"))
                 .exchange()
                 .expectStatus().isEqualTo(400)
                 .expectBody(ErrorMessage.class)
