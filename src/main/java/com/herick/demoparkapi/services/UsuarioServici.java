@@ -7,6 +7,7 @@ import com.herick.demoparkapi.entities.Usuario;
 import com.herick.demoparkapi.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +15,15 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class UsuarioServicie {
+public class UsuarioServici {
 
     private final UsuarioRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public Usuario create(Usuario user) {
         try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             return repository.save(user);
         } catch (DataIntegrityViolationException ex) {
             throw new UsernameUniqueViolationException(String.format("Username '%s' ja cadastrado", user.getUserName()));

@@ -2,9 +2,8 @@ package com.herick.demoparkapi.web.controllers;
 
 import com.herick.demoparkapi.web.Exceptions.ErrorMessage;
 import com.herick.demoparkapi.web.dto.UsuarioCreateDTO;
-import com.herick.demoparkapi.web.dto.UsuarioDTO;
 import com.herick.demoparkapi.entities.Usuario;
-import com.herick.demoparkapi.services.UsuarioServicie;
+import com.herick.demoparkapi.services.UsuarioServici;
 import com.herick.demoparkapi.web.dto.UsuarioResponseDTO;
 import com.herick.demoparkapi.web.dto.UsuarioSenhaDTO;
 import com.herick.demoparkapi.web.dto.mapper.UsuarioMapper;
@@ -28,7 +27,7 @@ import java.util.List;
 @RequestMapping(value = "/api/v1/usuarios")
 public class UsuarioController {
 
-    private final UsuarioServicie service;
+    private final UsuarioServici service;
 
     @Operation(
             summary = "Criar um novo usuário",
