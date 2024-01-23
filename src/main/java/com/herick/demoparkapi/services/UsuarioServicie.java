@@ -35,7 +35,6 @@ public class UsuarioServicie {
     }
 
 
-
     @Transactional
     public List<Usuario> findAll() {
         return repository.findAll();
@@ -59,5 +58,17 @@ public class UsuarioServicie {
         user.setPassword(novaSenha);
         return user;
 
+    }
+
+    @Transactional
+    public Usuario buscarPorUsername(String username) {
+        return repository.findByUserName(username).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Usuário com Username '%s' não encontrado", username)));
+
+    }
+
+    @Transactional(readOnly = true)
+    public Usuario.Role buscarRolePorUsername(String username) {
+        return repository.findRoleByUsername(username);
     }
 }

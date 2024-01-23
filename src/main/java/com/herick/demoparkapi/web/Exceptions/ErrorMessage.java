@@ -21,7 +21,7 @@ public class ErrorMessage {
     public ErrorMessage() {
     }
 
-    ErrorMessage(HttpServletRequest request, HttpStatus status, String message) {
+    public ErrorMessage(HttpServletRequest request, HttpStatus status, String message) {
         this.path = request.getRequestURI();
         this.method = request.getMethod();
         this.status = status.value();
